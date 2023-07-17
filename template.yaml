@@ -16,7 +16,6 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton
-        values:
     - id: publish
       name: publish
       action: publish:github:merge-request
