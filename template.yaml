@@ -20,14 +20,16 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+              - gitlab.com
   steps:
     - id: fetch
       name: fetch
       action: fetch:template
       input:
         url: ./skeleton
-    - id: publish
-      name: Publish
+    - id: publish_github
+      name: Publish to github
+      if: ${{ parameters.repoUrl.startsWith(github) }}
       action: publish:github:pull-request
       input:
         allowedHosts: ['github.com']
@@ -35,3 +37,12 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         branchName: 'test'
         title: 'test'
+    - id: publish_gitlab
+      name: Publish to gitlab
+      if: ${{ parameters.repoUrl.startsWith(gitlab) }}
+      action: publish:gitlab:merge-request
+      input:
+        allowedHosts: ["gitlab.com"]
+        repoUrl: ${{ parameters.repoUrl }}
+        branchName: 'test'
+        title: 'test' 
