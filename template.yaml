@@ -18,9 +18,9 @@ spec:
         url: ./skeleton
     - id: publish
       name: publish
-      action: publish:github:merge-request
+      action: publish:github:pull-request
       input:
-        allowedHosts: ["github.com"]
         repoUrl: https://github.com/gdolfen/backstage_symlink_template
         branchName: 'test'
         title: 'test'
+        description : 'test'
