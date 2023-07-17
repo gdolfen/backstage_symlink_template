@@ -10,18 +10,18 @@ spec:
   type: service
   parameters:
     - title: No Imput needed
-steps:
-  - id: fetch
-    name: fetch
-    action: fetch:template
-    input:
-      url: ./skeleton
-      values:
-  - id: publish
-    name: publish
-    action: publish:github:merge-request
-    input:
-      allowedHosts: ["github.com"]
-      repoUrl: https://github.com/gdolfen/backstage_symlink_template
-      branchName: 'test'
-      title: 'test'
+  steps:
+    - id: fetch
+      name: fetch
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+    - id: publish
+      name: publish
+      action: publish:github:merge-request
+      input:
+        allowedHosts: ["github.com"]
+        repoUrl: https://github.com/gdolfen/backstage_symlink_template
+        branchName: 'test'
+        title: 'test'
