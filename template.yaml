@@ -9,7 +9,17 @@ spec:
   owner: gdolfen
   type: service
   parameters:
-    - title: No Imput needed
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
   steps:
     - id: fetch
       name: fetch
@@ -17,11 +27,11 @@ spec:
       input:
         url: ./skeleton
     - id: publish
-      name: publish
+      name: Publish
       action: publish:github:pull-request
       input:
-        allowedHosts: ["github.com"]
-        repoUrl: https://github.com/gdolfen/backstage_symlink_template
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
         branchName: 'test'
         title: 'test'
-        description : 'test'
